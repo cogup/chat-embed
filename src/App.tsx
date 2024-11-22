@@ -23,10 +23,13 @@ function App() {
   };
 
   useEffect(() => {
-    setThemeDarker((theme) => mergeTheme(config, theme));
-    setThemeLighter((theme) => mergeTheme(config, theme));
+    if (config) {
+      console.log({ config });
+      setThemeDarker((theme) => mergeTheme(config, theme));
+      setThemeLighter((theme) => mergeTheme(config, theme));
+    }
   }, [config]);
-
+  console.log(themeDarker);
   return (
     <Theme lighter={themeLighter} darker={themeDarker}>
       <RootStyle>

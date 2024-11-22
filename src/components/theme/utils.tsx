@@ -208,7 +208,7 @@ export const useMediaQuery = (query: string) => {
     const handler = (e: MediaQueryListEvent) => setMatches(e.matches);
     mediaQuery.addEventListener("change", handler);
     return () => mediaQuery.removeEventListener("change", handler);
-  }, []);
+  });
 
   return matches;
 };
