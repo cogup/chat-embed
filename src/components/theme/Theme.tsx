@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { DefaultTheme, ThemeProvider } from "styled-components";
-import lighter from "../../settings/themes/lighter";
-import darker from "../../settings/themes/darker";
 import { resolveTheme, Theme as ITheme } from "./utils";
 
 interface ThemeProps {
   children: React.ReactNode;
+  lighter: ITheme;
+  darker: ITheme;
 }
 export const t = (t: DefaultTheme): ITheme => t as ITheme;
 
-const Theme: React.FC<ThemeProps> = ({ children }) => {
+const Theme: React.FC<ThemeProps> = ({ children, lighter, darker }) => {
   const [theme, setTheme] = useState(lighter);
   const [darkMode, setDarkMode] = useState(false);
 
@@ -19,7 +19,7 @@ const Theme: React.FC<ThemeProps> = ({ children }) => {
     } else {
       setTheme({ ...lighter, darkMode: false });
     }
-  }, [darkMode]);
+  }, [darkMode, lighter, darker]);
 
   useEffect(() => {
     const changeTheme = (event: MediaQueryListEvent) => {

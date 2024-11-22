@@ -4,7 +4,6 @@ import ChatTextarea from "./ChatTextarea";
 import MessagesContainerListener, {
   MessagesContainerListenerProps,
 } from "./MessagesContainerListener";
-import { ViewLoader } from "../../../components/elements/Loader";
 import { useAppSelector } from "../../../core/hooks";
 
 const ChatContainer = styled.div`

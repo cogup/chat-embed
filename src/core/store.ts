@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import chatReducer, { ChatEntityState } from "../modules/chat/entities/chat";
+import chatReducer, { ChatEntityState } from "../modules/chat/entities/config";
 import messageReducer, {
   MessageEntityState,
 } from "../modules/message/entities/message";

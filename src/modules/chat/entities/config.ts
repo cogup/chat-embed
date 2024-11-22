@@ -5,7 +5,7 @@ import { ActionType, EntityState, initialState } from "../../../core/entities";
 import { Config } from "../interfaces";
 
 export const startChat = createAsyncThunk(
-  ActionType.CHAT_GET_CURRENT_OR_CREATE_CHAT,
+  ActionType.CONFIG_GET_CURRENT_OR_CREATE_CONFIG,
   async () => {
     return await api.startChat();
   }
@@ -13,8 +13,8 @@ export const startChat = createAsyncThunk(
 
 export type ChatEntityState = EntityState<Config>;
 
-export const chatEntity = createSlice({
-  name: "chatEntity",
+export const configEntity = createSlice({
+  name: "configEntity",
   initialState: initialState<Config>(),
   reducers: {
     clearChatEntity: (state) => {
@@ -45,7 +45,7 @@ export const chatEntity = createSlice({
   },
 });
 
-export const { clearChatEntity } = chatEntity.actions;
+export const { clearChatEntity } = configEntity.actions;
 
 export const getChatEntity = (state: { aiHandler: ChatEntityState }) =>
   state.aiHandler.entity;
@@ -56,4 +56,4 @@ export const getChatLoading = (state: { aiHandler: ChatEntityState }) =>
 export const getChatError = (state: { aiHandler: ChatEntityState }) =>
   state.aiHandler.error;
 
-export default chatEntity.reducer;
+export default configEntity.reducer;

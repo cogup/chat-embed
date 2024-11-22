@@ -1,5 +1,6 @@
 import { Colord, colord } from "colord";
 import { useEffect, useState } from "react";
+import { Config } from "../../modules/chat/interfaces";
 
 export enum ColorType {
   PRIMARY = "primary",
@@ -214,4 +215,17 @@ export const useMediaQuery = (query: string) => {
 
 export const useIsMobile = () => {
   return useMediaQuery("(max-width: 768px)");
+};
+
+export const mergeTheme = (config: Config, theme: Theme): Theme => {
+  return {
+    ...theme,
+    colors: {
+      ...theme.colors,
+      primary: config.colorPrimary
+        ? new Color(config.colorPrimary, config.colorPrimary)
+        : theme.colors.primary,
+    },
+    background: theme.background,
+  };
 };

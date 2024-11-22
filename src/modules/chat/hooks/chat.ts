@@ -1,8 +1,9 @@
 import { useAppDispatch, useAppSelector } from "../../../core/hooks";
 import { useEffect } from "react";
-import { startChat } from "../entities/chat";
+import { startChat } from "../entities/config";
+import { Config } from "../interfaces";
 
-export const useChat = () => {
+export const useConfig = (): Config => {
   const dispatch = useAppDispatch();
   const chat = useAppSelector((state: any) => state.chatEntity.entity);
 
@@ -11,8 +12,4 @@ export const useChat = () => {
   }, [dispatch]);
 
   return chat;
-};
-
-export const useChatEntity = () => {
-  return useAppSelector((state: any) => state.chatEntity);
 };

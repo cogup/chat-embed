@@ -6,30 +6,20 @@ import {
 import { useEffect, useState } from "react";
 import { listMessages } from "../entities/message";
 import { Reducer } from "../../../core/store";
-import { useChat } from "../../chat/hooks/chat";
+import { useConfig } from "../../chat/hooks/chat";
 import { Message } from "../interfaces";
 
 export const useMessagesListener = () => {
-  const chat = useChat();
+  const config = useConfig();
 
   const entities = useAppSelector((state) => state.messageEntity.entities);
   const [localMessages, setLocalMessages] = useState<Message[]>([]);
-  const [lastChatId, setLastChatId] = useState<number | null>(null);
-  const dispatch = useAppDispatch();
   const recursiveDispatchListMessages = useEntityRecursiveDispatch(
-    chat.userChatId,
+    config.token,
     () => listMessages(),
     (state: Reducer) => state.messageEntity.entities,
     5000
   );
-
-  useEffect(() => {
-    if (chat && chat.id !== lastChatId) {
-      setLastChatId(chat.id);
-      dispatch(listMessages());
-      setLocalMessages([]);
-    }
-  }, [chat, lastChatId, dispatch]);
 
   useEffect(() => {
     if (entities) {
@@ -47,7 +37,7 @@ export const useMessagesListener = () => {
     return () => recursiveDispatchListMessages.stopDispatch();
   }, [recursiveDispatchListMessages, entities]);
 
-  if (!chat) {
+  if (!config) {
     return [];
   }
 
@@ -57,7 +47,7 @@ export const useMessagesListener = () => {
 export const useMessages = () => {
   const dispatch = useAppDispatch();
   const messages = useAppSelector((state) => state.messageEntity.entities);
-  const chat = useChat();
+  const chat = useConfig();
 
   useEffect(() => {
     if (chat) {
