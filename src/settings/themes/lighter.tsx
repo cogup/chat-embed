@@ -57,4 +57,8 @@ const theme = {
   },
 } as Theme;
 
+export const updateTheme = (item: Theme) => {
+  Object.assign(theme, item);
+};
+
 export default theme;

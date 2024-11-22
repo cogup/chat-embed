@@ -25,25 +25,16 @@ const ChatInfo = styled.div`
 `;
 
 export interface ChatProps extends MessagesContainerListenerProps {
-  loading?: boolean;
   textarea?: boolean;
 }
 
-const Chat: React.FC<ChatProps> = ({ loading, textarea = true, ...props }) => {
+const Chat: React.FC<ChatProps> = ({ textarea = true, ...props }) => {
   const messageError = useAppSelector((state) => state.messageEntity.error);
 
   if (messageError) {
     return (
       <ChatContainer>
         <ChatInfo>{messageError}</ChatInfo>
-      </ChatContainer>
-    );
-  }
-
-  if (!loading) {
-    return (
-      <ChatContainer>
-        <ViewLoader />
       </ChatContainer>
     );
   }
