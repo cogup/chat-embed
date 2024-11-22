@@ -12,14 +12,14 @@ const Wrapper = styled.div`
   padding: 0.5rem 0.5rem 0.5rem 1.5rem;
   box-sizing: border-box;
   border: none;
-  box-shadow: ${({ theme }) => t(theme).elements.input.boxShadow};
+  box-shadow: ${({ theme }) => t(theme).input.boxShadow};
   width: 100%;
   margin: 0.1rem;
   overflow: auto;
-  background-color: ${({ theme }) => t(theme).elements.input.background};
+  background-color: ${({ theme }) => t(theme).input.background};
   max-height: 150px;
   border-radius: 30px;
-  border: 1px solid ${({ theme }) => t(theme).colors.grayLight.value};
+  border: 1px solid ${({ theme }) => t(theme).colors.gray.value};
 `;
 
 interface TextareaUIProps {
@@ -32,7 +32,7 @@ const TextareaUI = styled.textarea<TextareaUIProps>`
   box-sizing: border-box;
   resize: none;
   font-family: inherit;
-  color: ${({ theme }) => t(theme).elements.input.color};
+  color: ${({ theme }) => t(theme).input.color};
   white-space: pre-wrap;
   background-color: transparent;
   overflow: hidden;

@@ -18,18 +18,18 @@ const ChatMessageWrapper = styled.div`
 const ChatMessageUser = styled(ChatMessageWrapper)`
   background-color: ${({ theme }) => t(theme).colors.secondary.value};
   border-radius: ${({ theme }) =>
-    `${t(theme).defaultStyles.borderRadius} 0px ${
-      t(theme).defaultStyles.borderRadius
-    } ${t(theme).defaultStyles.borderRadius}`};
+    `${t(theme).borderRadius} 0px ${t(theme).borderRadius} ${
+      t(theme).borderRadius
+    }`};
   color: ${({ theme }) => t(theme).colors.secondary.text};
 `;
 
 const ChatMessageAssistant = styled(ChatMessageWrapper)`
   background-color: ${({ theme }) => t(theme).colors.primary.value};
   border-radius: ${({ theme }) =>
-    `0px ${t(theme).defaultStyles.borderRadius} ${
-      t(theme).defaultStyles.borderRadius
-    } ${t(theme).defaultStyles.borderRadius}`};
+    `0px ${t(theme).borderRadius} ${t(theme).borderRadius} ${
+      t(theme).borderRadius
+    }`};
   color: ${({ theme }) => t(theme).colors.primary.text};
   position: relative;
   min-width: 4rem;

@@ -18,8 +18,8 @@ export default styled.div`
   color: ${({ theme }) => t(theme).colors.light.text};
 
   ::selection {
-    background: ${({ theme }) => t(theme).elements.selection.background};
-    color: ${({ theme }) => t(theme).elements.selection.color};
+    background: ${({ theme }) => t(theme).colors.dark.value};
+    color: ${({ theme }) => t(theme).colors.dark.text};
   }
 
   @media (max-width: 769px) {

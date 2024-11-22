@@ -12,8 +12,19 @@ export enum ColorType {
   LIGHT = "light",
   DARK = "dark",
   LINK = "link",
-  TRANSPARENT = "transparent",
-  TRANSPARENT_COLOR_HOVER = "transparentColorHover",
+}
+
+export interface Colors {
+  primary: Color;
+  secondary: Color;
+  success: Color;
+  danger: Color;
+  warning: Color;
+  info: Color;
+  light: Color;
+  dark: Color;
+  link: Color;
+  gray: Color;
 }
 
 export const getColorByType = (type: ColorType, theme: Theme) => {
@@ -28,41 +39,16 @@ export enum ThemeType {
 export interface Theme {
   type: ThemeType;
   colors: Colors;
-  defaultStyles: CSSStyleDeclaration;
+  borderRadius: string;
+  boxShadow: string;
   darkMode: boolean;
   background: string;
-  elements: {
-    selection: {
-      background: string;
-      color: string;
-    };
-    input: {
-      borderRadius: string;
-      boxShadow: string;
-      background: string;
-      color: string;
-    };
-    textarea: {
-      borderRadius: string;
-    };
+  input: {
+    borderRadius: string;
+    boxShadow: string;
+    background: string;
+    color: string;
   };
-}
-
-export interface Colors {
-  primary: Color;
-  secondary: Color;
-  success: Color;
-  danger: Color;
-  warning: Color;
-  info: Color;
-  light: Color;
-  dark: Color;
-  link: Color;
-  transparent: Color;
-  gray: Color;
-  grayDark: Color;
-  grayLight: Color;
-  transparentColorHover: Color;
 }
 
 export class Color {

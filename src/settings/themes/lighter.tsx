@@ -12,30 +12,16 @@ const theme = {
     light: new Color("#fff", "#F4F4F4"),
     dark: new Color("#171717", "#111111"),
     link: new Color("#002033", "#0a588a"),
-    transparent: new Color("transparent"),
-    grayLight: new Color("#F4F4F4", "#e7e7e7"),
-    gray: new Color("#dddddd", "#e7e7e7"),
-    grayDark: new Color("#bbb", "#a7a7a7"),
-    transparentColorHover: new Color("transparent", "#0B72B4"),
+    gray: new Color("#F4F4F4", "#e7e7e7"),
   },
   background: "#fff 20%,  #b4bbc0 100%",
-  defaultStyles: {
+  borderRadius: "12px",
+  boxShadow: "0 0 1px 0 rgba(0, 0, 0, 0.4)",
+  input: {
     borderRadius: "12px",
-    boxShadow: "0 0 1px 0 rgba(0, 0, 0, 0.4)",
-  },
-  elements: {
-    selection: {
-      background: "#0a588a",
-      color: "#fff",
-    },
-    input: {
-      borderRadius: "12px",
-      background: "#F4F4F4",
-      color: "#002033",
-    },
-    textarea: {
-      borderRadius: "6px",
-    },
+    boxShadow: "0px 2px 5px 0 rgba(0, 0, 0, 0.15)",
+    background: "#F4F4F4",
+    color: "#002033",
   },
 } as Theme;
 

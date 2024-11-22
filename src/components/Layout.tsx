@@ -17,9 +17,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  max-width: 100%;
-  width: 100%;
-
+  width: 100vw;
+  height: 100vh;
   background: ${({ theme }) => t(theme).background};
 `;
 
@@ -30,6 +29,10 @@ const Container = styled.div`
   align-items: center;
   width: 50vw;
   height: 80vh;
+  background: ${({ theme }) => t(theme).colors.light.value};
+  border-radius: ${({ theme }) => t(theme).borderRadius};
+  padding: 1rem;
+  box-shadow: ${({ theme }) => t(theme).boxShadow};
 `;
 
 interface LayoutProps {
