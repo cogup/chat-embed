@@ -29,7 +29,7 @@ function App() {
       setThemeLighter((theme) => mergeTheme(config, theme));
     }
   }, [config]);
-  console.log(themeDarker);
+
   return (
     <Theme lighter={themeLighter} darker={themeDarker}>
       <RootStyle>

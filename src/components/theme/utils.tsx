@@ -36,21 +36,6 @@ export interface Theme {
       background: string;
       color: string;
     };
-    box: {
-      boxShadow: string;
-      borderRadius: string;
-    };
-    headerIcon: {
-      borderRadius: string;
-    };
-    dropdown: {
-      borderRadius: string;
-      boxShadow: string;
-    };
-    pophover: {
-      borderRadius: string;
-      boxShadow: string;
-    };
     input: {
       borderRadius: string;
       boxShadow: string;
@@ -60,13 +45,6 @@ export interface Theme {
     textarea: {
       borderRadius: string;
     };
-    especialInput: {
-      borderRadius: string;
-      boxShadow: string;
-      background: string;
-      color: string;
-    };
-    lines: string;
   };
 }
 
@@ -226,6 +204,8 @@ export const mergeTheme = (config: Config, theme: Theme): Theme => {
         ? new Color(config.colorPrimary, config.colorPrimary)
         : theme.colors.primary,
     },
-    background: theme.background,
+    background: config.backgroundColor
+      ? config.backgroundColor
+      : theme.background,
   };
 };

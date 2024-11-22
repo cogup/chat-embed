@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useQuerystring } from "../core/uses";
+import { t } from "./theme/Theme";
 
 const FullScreen = styled.div`
   display: flex;
@@ -18,6 +19,8 @@ const Wrapper = styled.div`
   align-items: center;
   max-width: 100%;
   width: 100%;
+
+  background: ${({ theme }) => t(theme).background};
 `;
 
 const Container = styled.div`

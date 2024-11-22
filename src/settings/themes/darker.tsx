@@ -28,30 +28,12 @@ const theme = {
       background: "#ffffff",
       color: "#011c36",
     },
-    headerIcon: {
-      borderRadius: "6px",
-    },
-    dropdown: {
-      boxShadow: "0px 2px 5px 0 rgba(0, 0, 0, 0.5)",
-      borderRadius: "10px",
-    },
-    pophover: {
-      boxShadow: "0px 2px 5px 0 rgba(0, 0, 0, 0.5)",
-      borderRadius: "10px",
-    },
-    especialInput: {
-      borderRadius: "12px",
-      boxShadow: "0px 2px 5px 0 rgba(0, 0, 0, 0.15)",
-      background: "#111",
-      color: "#fff",
-    },
     input: {
       borderRadius: "12px",
       boxShadow: "0px 2px 5px 0 rgba(0, 0, 0, 0.15)",
       background: "#252525",
       color: "#fff",
     },
-    lines: "1px solid rgba(255, 255, 255, 0.1)",
   },
 } as Theme;
 

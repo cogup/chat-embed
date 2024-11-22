@@ -28,23 +28,6 @@ const theme = {
       background: "#0a588a",
       color: "#fff",
     },
-    headerIcon: {
-      borderRadius: "6px",
-    },
-    dropdown: {
-      boxShadow: "0px 5px 5px 0 rgba(0, 0, 0, 0.2)",
-      borderRadius: "10px",
-    },
-    pophover: {
-      boxShadow: "0px 2px 10px 0 rgba(0, 0, 0, 0.4)",
-      borderRadius: "10px",
-    },
-    especialInput: {
-      borderRadius: "12px",
-      boxShadow: "0px 2px 5px 0 rgba(0, 0, 0, 0.2)",
-      background: "rgba(255, 255, 255, 0.8)",
-      color: "#002033",
-    },
     input: {
       borderRadius: "12px",
       background: "#F4F4F4",
@@ -53,7 +36,6 @@ const theme = {
     textarea: {
       borderRadius: "6px",
     },
-    lines: "1px solid rgba(0, 0, 0, 0.1)",
   },
 } as Theme;
 
