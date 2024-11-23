@@ -2,18 +2,6 @@ import { Colord, colord } from "colord";
 import { useEffect, useState } from "react";
 import { Config } from "../../modules/chat/interfaces";
 
-export enum ColorType {
-  PRIMARY = "primary",
-  SECONDARY = "secondary",
-  SUCCESS = "success",
-  DANGER = "danger",
-  WARNING = "warning",
-  INFO = "info",
-  LIGHT = "light",
-  DARK = "dark",
-  LINK = "link",
-}
-
 export interface Tokens {
   darkMode: boolean;
   boxShadowContainer: string;

@@ -1,6 +1,5 @@
 import React, { CSSProperties, useEffect, useState } from "react";
 import { IoMdArrowRoundUp } from "react-icons/io";
-import { ColorType } from "../theme/utils";
 import styled from "styled-components";
 import { t } from "../theme/Theme";
 
@@ -183,10 +182,7 @@ const Textarea: React.FC<TextareaProps> = ({
   const renderButtonSender = () => {
     if (buttonSender) {
       return (
-        <TextareaButton
-          color={ColorType.LIGHT}
-          onClick={onClickSendButtonLocal}
-        >
+        <TextareaButton onClick={onClickSendButtonLocal}>
           <IoMdArrowRoundUp />
         </TextareaButton>
       );
