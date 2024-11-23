@@ -16,7 +16,7 @@ const light = {
   boxShadowContainer: "0 0 2px 0 rgba(0, 0, 0, 0.5)",
   buttonSendBorderRadius: "50%",
   borderRadius: "12px",
-  inputColor: "#fff",
+  inputColor: "#171717",
   inputBorderRadius: "30px",
   inputBoxShadow: "0px 2px 5px 0 rgba(0, 0, 0, 0.15)",
   backgroundSiteImage: "",
