@@ -16,7 +16,7 @@ const Wrapper = styled.div`
   width: 100%;
   margin: 0.1rem;
   overflow: auto;
-  background-color: ${({ theme }) => t(theme).inputBackgroundColor};
+  background-color: ${({ theme }) => t(theme).inputBackgroundColor.value};
   max-height: 150px;
   border-radius: ${({ theme }) => t(theme).inputBorderRadius};
   border: 1px solid ${({ theme }) => t(theme).inputColorBorder.value};

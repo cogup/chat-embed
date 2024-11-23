@@ -21,7 +21,7 @@ export interface Theme {
   inputBorderRadius: string;
   buttonSendBorderRadius: string;
   inputBoxShadow: string;
-  inputBackgroundColor: string;
+  inputBackgroundColor: Color;
   inputColor: string;
   inputColorBorder: Color;
   ballonSystemColor: Color;
@@ -127,10 +127,6 @@ export class Color {
 
   get text() {
     if (this.colorTextDark?.value && this.colorTextLight?.value) {
-      if (this.transparent) {
-        return this.colorTextDark.value;
-      }
-
       if (this.darkMode) {
         return this.color.isLight()
           ? this.colorTextLight.value
