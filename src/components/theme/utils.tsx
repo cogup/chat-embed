@@ -127,17 +127,20 @@ export class Color {
 export const resolveTheme = (theme: Theme): Theme => {
   const fixTheme = theme as Record<string, any>;
 
+  const colorLight = theme.darkMode ? theme.colorDark : theme.colorLight;
+  const colorDark = theme.darkMode ? theme.colorLight : theme.colorDark;
+
   Object.keys(theme).forEach((key) => {
     if (fixTheme[key] instanceof Color) {
       console.log(fixTheme[key]);
       const upColor = fixTheme[key] as Color;
 
-      upColor.setColorTextLight(theme.colorLight);
-      upColor.setColorTextDark(theme.colorDark);
+      upColor.setColorTextLight(colorLight);
+      upColor.setColorTextDark(colorDark);
       upColor.setDarkMode(theme.darkMode);
 
-      upColor.hover.setColorTextLight(theme.colorLight);
-      upColor.hover.setColorTextDark(theme.colorDark);
+      upColor.hover.setColorTextLight(colorLight);
+      upColor.hover.setColorTextDark(colorDark);
       upColor.hover.setDarkMode(theme.darkMode);
 
       fixTheme[key] = upColor;
