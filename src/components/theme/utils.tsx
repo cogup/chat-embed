@@ -26,15 +26,15 @@ export interface Tokens {
   backgroundChatImage: string;
 }
 
-export interface Theme {
+export interface Themes {
   light: Tokens;
   dark: Tokens;
 }
 
-export const mergeTheme = (config: Config, theme: Theme): Theme => {
+export const mergeTheme = (config: Config, themes: Themes): Themes => {
   return {
-    ...theme,
-    ...config.theme,
+    ...themes,
+    ...config.themes,
   };
 };
 
@@ -91,7 +91,7 @@ export class Color {
   }
 }
 
-export const resolveThemes = (themes: Theme): Theme => {
+export const resolveThemes = (themes: Themes): Themes => {
   return {
     light: resolveTokens(themes.light),
     dark: resolveTokens(themes.dark),

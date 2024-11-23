@@ -1,4 +1,4 @@
-import { Color, Theme, Tokens } from "../../components/theme/utils";
+import { Color, Themes, Tokens } from "../../components/theme/utils";
 
 const light = {
   colorDark: new Color("#171717"),
@@ -51,4 +51,4 @@ const dark = {
 export default {
   light,
   dark,
-} as Theme;
+} as Themes;

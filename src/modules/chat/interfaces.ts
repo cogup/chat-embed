@@ -1,7 +1,7 @@
-import { Theme } from "../../components/theme/utils";
+import { Themes } from "../../components/theme/utils";
 
 export type Config = {
-  theme: Theme;
-  darkMode?: boolean;
+  themes: Themes;
+  darkMode: boolean;
   token: string;
 };
