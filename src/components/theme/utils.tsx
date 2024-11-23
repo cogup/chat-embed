@@ -96,16 +96,13 @@ export const resolveTokens = (tokens: Tokens, darkMode: boolean): Tokens => {
 
   Object.keys(tokens).forEach((key) => {
     if (fixTokens[key] instanceof Color) {
-      console.log(fixTokens[key]);
       const upColor = fixTokens[key] as Color;
 
       upColor.setColorTextLight(fixTokens.colorLight);
       upColor.setColorTextDark(fixTokens.colorDark);
-      upColor.setDarkMode(darkMode);
 
       upColor.hover.setColorTextLight(fixTokens.colorLight);
       upColor.hover.setColorTextDark(fixTokens.colorDark);
-      upColor.hover.setDarkMode(darkMode);
 
       fixTokens[key] = upColor;
     }

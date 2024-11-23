@@ -17,29 +17,27 @@ const Theme: React.FC<ThemeProps> = ({ children, config }) => {
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    if (config && config.darkMode && darkMode) {
+    if (darkMode) {
       setTheme({ ...defaultTheme.dark, darkMode: true });
     } else {
       setTheme({ ...defaultTheme.light, darkMode: false });
     }
-  }, [config, config?.darkMode, darkMode]);
+  }, [darkMode]);
 
   useEffect(() => {
-    if (config && config.darkMode) {
-      const changeTheme = (event: MediaQueryListEvent) => {
-        setDarkMode(event.matches);
-      };
+    const changeTheme = (event: MediaQueryListEvent) => {
+      setDarkMode(event.matches);
+    };
 
-      const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-      setDarkMode(darkQuery.matches);
+    setDarkMode(darkQuery.matches);
 
-      darkQuery.addEventListener("change", changeTheme);
+    darkQuery.addEventListener("change", changeTheme);
 
-      return () => {
-        darkQuery.removeEventListener("change", changeTheme);
-      };
-    }
+    return () => {
+      darkQuery.removeEventListener("change", changeTheme);
+    };
   }, []);
 
   const getTheme = () => {
