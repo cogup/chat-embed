@@ -43,7 +43,7 @@ const Theme: React.FC<ThemeProps> = ({ children, config }) => {
   }, []);
 
   const getTheme = () => {
-    return resolveTokens(theme);
+    return resolveTokens(theme, darkMode);
   };
 
   return <ThemeProvider theme={getTheme()}>{children}</ThemeProvider>;

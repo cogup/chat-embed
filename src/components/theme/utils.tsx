@@ -91,14 +91,7 @@ export class Color {
   }
 }
 
-export const resolveThemes = (themes: Themes): Themes => {
-  return {
-    light: resolveTokens(themes.light),
-    dark: resolveTokens(themes.dark),
-  };
-};
-
-export const resolveTokens = (tokens: Tokens): Tokens => {
+export const resolveTokens = (tokens: Tokens, darkMode: boolean): Tokens => {
   const fixTokens = tokens as Record<string, any>;
 
   Object.keys(tokens).forEach((key) => {
@@ -108,11 +101,11 @@ export const resolveTokens = (tokens: Tokens): Tokens => {
 
       upColor.setColorTextLight(fixTokens.colorLight);
       upColor.setColorTextDark(fixTokens.colorDark);
-      upColor.setDarkMode(tokens.darkMode);
+      upColor.setDarkMode(darkMode);
 
       upColor.hover.setColorTextLight(fixTokens.colorLight);
       upColor.hover.setColorTextDark(fixTokens.colorDark);
-      upColor.hover.setDarkMode(tokens.darkMode);
+      upColor.hover.setDarkMode(darkMode);
 
       fixTokens[key] = upColor;
     }
