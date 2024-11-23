@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { startChat } from "../entities/config";
 import { Config } from "../interfaces";
 
-export const useConfig = (): Config => {
+export const useConfig = (): Config | null => {
   const dispatch = useAppDispatch();
   const chat = useAppSelector((state: any) => state.chatEntity.entity);
 

@@ -7,24 +7,24 @@ import { LuCheck, LuCheckCheck } from "react-icons/lu";
 
 const IconNoCheck = styled(LuCheck)`
   font-size: 0.8rem;
-  color: ${({ theme }) => t(theme).colors.success.value};
+  color: ${({ theme }) => t(theme).colorNoCheck.value};
 `;
 
 const IconCheck = styled(LuCheckCheck)`
   font-size: 0.8rem;
-  color: ${({ theme }) => t(theme).colors.success.value};
+  color: ${({ theme }) => t(theme).colorCheck.value};
 `;
 
 const FooterDateUser = styled.div`
   display: flex;
   justify-content: flex-end;
-  color: ${({ theme }) => t(theme).colors.secondary.text};
+  color: ${({ theme }) => t(theme).balloonUserColor.text};
 `;
 
 const FooterDateOther = styled.div`
   display: flex;
   justify-content: flex-end;
-  color: ${({ theme }) => t(theme).colors.primary.text};
+  color: ${({ theme }) => t(theme).balloonAssistantColor.text};
 `;
 
 const FooterStatus = styled.div`

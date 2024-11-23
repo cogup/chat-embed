@@ -12,14 +12,14 @@ const Wrapper = styled.div`
   padding: 0.5rem 0.5rem 0.5rem 1.5rem;
   box-sizing: border-box;
   border: none;
-  box-shadow: ${({ theme }) => t(theme).input.boxShadow};
+  box-shadow: ${({ theme }) => t(theme).inputBoxShadow};
   width: 100%;
   margin: 0.1rem;
   overflow: auto;
-  background-color: ${({ theme }) => t(theme).input.background};
+  background-color: ${({ theme }) => t(theme).inputBackgroundColor};
   max-height: 150px;
-  border-radius: 30px;
-  border: 1px solid ${({ theme }) => t(theme).colors.gray.value};
+  border-radius: ${({ theme }) => t(theme).inputBorderRadius};
+  border: 1px solid ${({ theme }) => t(theme).inputColorBorder.value};
 `;
 
 interface TextareaUIProps {
@@ -32,7 +32,7 @@ const TextareaUI = styled.textarea<TextareaUIProps>`
   box-sizing: border-box;
   resize: none;
   font-family: inherit;
-  color: ${({ theme }) => t(theme).input.color};
+  color: ${({ theme }) => t(theme).inputColor};
   white-space: pre-wrap;
   background-color: transparent;
   overflow: hidden;
@@ -59,9 +59,9 @@ const TextareaButton = styled.button`
   min-height: 40px !important;
   height: 40px !important;
   padding: 0;
-  background-color: ${({ theme }) => t(theme).colors.primary.value};
-  color: ${({ theme }) => t(theme).colors.primary.text};
-  border-radius: 40px;
+  background-color: ${({ theme }) => t(theme).buttonSendColor.value};
+  color: ${({ theme }) => t(theme).buttonSendColor.text};
+  border-radius: ${({ theme }) => t(theme).buttonSendBorderRadius};
 `;
 
 export interface TextareaProps

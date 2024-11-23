@@ -14,23 +14,6 @@ export enum ColorType {
   LINK = "link",
 }
 
-export interface Colors {
-  primary: Color;
-  secondary: Color;
-  success: Color;
-  danger: Color;
-  warning: Color;
-  info: Color;
-  light: Color;
-  dark: Color;
-  link: Color;
-  gray: Color;
-}
-
-export const getColorByType = (type: ColorType, theme: Theme) => {
-  return theme.colors[type];
-};
-
 export enum ThemeType {
   Lighter,
   Darker,
@@ -38,18 +21,55 @@ export enum ThemeType {
 
 export interface Theme {
   type: ThemeType;
-  colors: Colors;
-  borderRadius: string;
-  boxShadow: string;
   darkMode: boolean;
-  background: string;
-  input: {
-    borderRadius: string;
-    boxShadow: string;
-    background: string;
-    color: string;
-  };
+  boxShadowContainer: string;
+  borderRadius: string;
+  inputBorderRadius: string;
+  buttonSendBorderRadius: string;
+  inputBoxShadow: string;
+  inputBackgroundColor: string;
+  inputColor: string;
+  inputColorBorder: Color;
+  ballonSystemColor: Color;
+  colorLight: Color;
+  colorDark: Color;
+  colorNoCheck: Color;
+  colorCheck: Color;
+  balloonUserColor: Color;
+  balloonAssistantColor: Color;
+  buttonSendColor: Color;
+  backgroundSiteImage: string;
+  backgroundSiteColor: Color;
+  backgroundChatColor: Color;
+  backgroundChatImage: string;
 }
+
+export const mergeTheme = (config: Config, theme: Theme): Theme => {
+  return {
+    ...theme,
+    balloonAssistantColor: config.balloonAssistantColor
+      ? new Color(config.balloonAssistantColor)
+      : theme.balloonAssistantColor,
+    balloonUserColor: config.balloonUserColor
+      ? new Color(config.balloonUserColor)
+      : theme.balloonUserColor,
+    backgroundChatImage: config.backgroundChatImage
+      ? config.backgroundChatImage
+      : theme.backgroundChatImage,
+    backgroundChatColor: config.backgroundChatColor
+      ? new Color(config.backgroundChatColor)
+      : theme.backgroundChatColor,
+    backgroundSiteColor: config.backgroundSiteColor
+      ? new Color(config.backgroundSiteColor)
+      : theme.backgroundSiteColor,
+    backgroundSiteImage: config.backgroundSiteImage
+      ? config.backgroundSiteImage
+      : theme.backgroundSiteImage,
+    buttonSendColor: config.buttonSendColor
+      ? new Color(config.buttonSendColor)
+      : theme.buttonSendColor,
+  };
+};
 
 export class Color {
   public color: Colord;
@@ -135,26 +155,27 @@ export class Color {
 }
 
 export const resolveTheme = (theme: Theme): Theme => {
-  const colors = theme.colors;
+  const fixTheme = theme as Record<string, any>;
 
-  for (const color in theme.colors) {
-    const upColor = theme.colors[color as keyof Colors];
+  const keys = Object.keys(theme) as (keyof Theme)[];
 
-    upColor.setColorTextLight(theme.colors.light);
-    upColor.setColorTextDark(theme.colors.dark);
-    upColor.setDarkMode(theme.darkMode);
+  for (const item in keys) {
+    if (fixTheme[item] instanceof Color) {
+      const upColor = fixTheme[item] as Color;
 
-    upColor.hover.setColorTextDark(theme.colors.dark);
-    upColor.hover.setColorTextLight(theme.colors.light);
-    upColor.hover.setDarkMode(theme.darkMode);
+      upColor.setColorTextLight(theme.colorLight);
+      upColor.setColorTextDark(theme.colorDark);
+      upColor.setDarkMode(theme.darkMode);
 
-    colors[color as keyof Colors] = upColor;
+      upColor.hover.setColorTextDark(theme.colorDark);
+      upColor.hover.setColorTextLight(theme.colorLight);
+      upColor.hover.setDarkMode(theme.darkMode);
+
+      fixTheme[item] = upColor;
+    }
   }
 
-  return {
-    ...theme,
-    colors,
-  };
+  return fixTheme as Theme;
 };
 
 /**
@@ -179,19 +200,4 @@ export const useMediaQuery = (query: string) => {
 
 export const useIsMobile = () => {
   return useMediaQuery("(max-width: 768px)");
-};
-
-export const mergeTheme = (config: Config, theme: Theme): Theme => {
-  return {
-    ...theme,
-    colors: {
-      ...theme.colors,
-      primary: config.colorPrimary
-        ? new Color(config.colorPrimary, config.colorPrimary)
-        : theme.colors.primary,
-    },
-    background: config.backgroundColor
-      ? config.backgroundColor
-      : theme.background,
-  };
 };

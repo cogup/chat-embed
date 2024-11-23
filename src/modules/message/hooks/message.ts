@@ -15,7 +15,7 @@ export const useMessagesListener = () => {
   const entities = useAppSelector((state) => state.messageEntity.entities);
   const [localMessages, setLocalMessages] = useState<Message[]>([]);
   const recursiveDispatchListMessages = useEntityRecursiveDispatch(
-    config.token,
+    config?.token ?? "id",
     () => listMessages(),
     (state: Reducer) => state.messageEntity.entities,
     5000

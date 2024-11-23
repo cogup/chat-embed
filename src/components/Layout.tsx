@@ -19,7 +19,7 @@ const Wrapper = styled.div`
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background: ${({ theme }) => t(theme).background};
+  background: ${({ theme }) => t(theme).backgroundSiteColor.value};
 `;
 
 const Container = styled.div`
@@ -29,10 +29,10 @@ const Container = styled.div`
   align-items: center;
   width: 50vw;
   height: 80vh;
-  background: ${({ theme }) => t(theme).colors.light.value};
+  background: ${({ theme }) => t(theme).colorLight.value};
   border-radius: ${({ theme }) => t(theme).borderRadius};
   padding: 1rem;
-  box-shadow: ${({ theme }) => t(theme).boxShadow};
+  box-shadow: ${({ theme }) => t(theme).boxShadowContainer};
 `;
 
 interface LayoutProps {

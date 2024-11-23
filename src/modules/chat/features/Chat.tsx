@@ -38,18 +38,10 @@ const Chat: React.FC<ChatProps> = ({ textarea = true, ...props }) => {
     );
   }
 
-  const renderTextarea = () => {
-    if (textarea) {
-      return <ChatTextarea />;
-    }
-
-    return null;
-  };
-
   return (
     <ChatContainer>
       <MessagesContainerListener {...props} />
-      {renderTextarea()}
+      <ChatTextarea />
     </ChatContainer>
   );
 };

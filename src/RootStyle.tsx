@@ -14,12 +14,12 @@ export default styled.div`
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background: ${({ theme }) => t(theme).colors.light.value};
-  color: ${({ theme }) => t(theme).colors.light.text};
+  background: ${({ theme }) => t(theme).colorLight.value};
+  color: ${({ theme }) => t(theme).colorLight.text};
 
   ::selection {
-    background: ${({ theme }) => t(theme).colors.dark.value};
-    color: ${({ theme }) => t(theme).colors.dark.text};
+    background: ${({ theme }) => t(theme).colorDark.value};
+    color: ${({ theme }) => t(theme).colorDark.text};
   }
 
   @media (max-width: 769px) {

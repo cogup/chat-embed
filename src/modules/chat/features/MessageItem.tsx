@@ -16,28 +16,28 @@ const ChatMessageWrapper = styled.div`
 `;
 
 const ChatMessageUser = styled(ChatMessageWrapper)`
-  background-color: ${({ theme }) => t(theme).colors.secondary.value};
+  background-color: ${({ theme }) => t(theme).balloonUserColor.value};
   border-radius: ${({ theme }) =>
     `${t(theme).borderRadius} 0px ${t(theme).borderRadius} ${
       t(theme).borderRadius
     }`};
-  color: ${({ theme }) => t(theme).colors.secondary.text};
+  color: ${({ theme }) => t(theme).balloonUserColor.text};
 `;
 
 const ChatMessageAssistant = styled(ChatMessageWrapper)`
-  background-color: ${({ theme }) => t(theme).colors.primary.value};
+  background-color: ${({ theme }) => t(theme).balloonAssistantColor.value};
   border-radius: ${({ theme }) =>
     `0px ${t(theme).borderRadius} ${t(theme).borderRadius} ${
       t(theme).borderRadius
     }`};
-  color: ${({ theme }) => t(theme).colors.primary.text};
+  color: ${({ theme }) => t(theme).balloonAssistantColor.text};
   position: relative;
   min-width: 4rem;
 `;
 
 const ChatMessageSystem = styled(ChatMessageWrapper)`
-  background-color: ${({ theme }) => t(theme).colors.warning.value};
-  color: ${({ theme }) => t(theme).colors.warning.text};
+  background-color: ${({ theme }) => t(theme).ballonSystemColor.value};
+  color: ${({ theme }) => t(theme).ballonSystemColor.text};
   margin-left: 2rem;
 `;
 
@@ -74,7 +74,7 @@ const MarkdownFix = styled(Markdown)`
   }
 
   a {
-    color: ${({ theme }) => t(theme).colors.primary.text};
+    color: ${({ theme }) => t(theme).balloonAssistantColor.text};
     text-decoration: underline;
   }
 `;
