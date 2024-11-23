@@ -11,7 +11,7 @@ const theme = {
   colorCheck: new Color("#349e85"),
   ballonSystemColor: new Color("#2e2e2e"),
   balloonUserColor: new Color("#ffffff"),
-  balloonAssistantColor: new Color("#006dd3"),
+  balloonAssistantColor: new Color("#002a52"),
   buttonSendColor: new Color("#c1cfd8"),
   borderRadius: "12px",
   boxShadowContainer: "0 0 2px 0 rgba(255, 255, 255, 0.5)",

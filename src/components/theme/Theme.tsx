@@ -41,7 +41,11 @@ const Theme: React.FC<ThemeProps> = ({ children, config }) => {
     }
   }, []);
 
-  return <ThemeProvider theme={resolveTheme(theme)}>{children}</ThemeProvider>;
+  const getTheme = () => {
+    return resolveTheme(theme);
+  };
+
+  return <ThemeProvider theme={getTheme()}>{children}</ThemeProvider>;
 };
 
 export default Theme;

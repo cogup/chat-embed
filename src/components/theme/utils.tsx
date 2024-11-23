@@ -67,24 +67,12 @@ export const mergeTheme = (config: Config, theme: Theme): Theme => {
 
 export class Color {
   public color: Colord;
-  private hoverColor?: Color;
   private colorTextLight?: Color;
   private colorTextDark?: Color;
   private darkMode?: boolean;
-  private transparent: boolean;
 
-  constructor(color: string, darkMode?: boolean) {
-    if (color === "transparent") {
-      this.transparent = true;
-      this.color = darkMode
-        ? colord("rgba(0, 0, 0, 0)")
-        : colord("rgba(255, 255, 255, 0)");
-    } else {
-      this.transparent = false;
-      this.color = colord(color);
-    }
-
-    this.darkMode = darkMode;
+  constructor(color: string) {
+    this.color = colord(color);
   }
 
   get value() {
@@ -96,11 +84,7 @@ export class Color {
   }
 
   get hover(): Color {
-    if (this.hoverColor) {
-      return this.hoverColor;
-    }
-
-    return this;
+    return new Color(this.color.darken(0.5).toHex());
   }
 
   setColorTextLight(color: Color) {
@@ -143,23 +127,22 @@ export class Color {
 export const resolveTheme = (theme: Theme): Theme => {
   const fixTheme = theme as Record<string, any>;
 
-  const keys = Object.keys(theme) as (keyof Theme)[];
-
-  for (const item in keys) {
-    if (fixTheme[item] instanceof Color) {
-      const upColor = fixTheme[item] as Color;
+  Object.keys(theme).forEach((key) => {
+    if (fixTheme[key] instanceof Color) {
+      console.log(fixTheme[key]);
+      const upColor = fixTheme[key] as Color;
 
       upColor.setColorTextLight(theme.colorLight);
       upColor.setColorTextDark(theme.colorDark);
       upColor.setDarkMode(theme.darkMode);
 
-      upColor.hover.setColorTextDark(theme.colorDark);
       upColor.hover.setColorTextLight(theme.colorLight);
+      upColor.hover.setColorTextDark(theme.colorDark);
       upColor.hover.setDarkMode(theme.darkMode);
 
-      fixTheme[item] = upColor;
+      fixTheme[key] = upColor;
     }
-  }
+  });
 
   return fixTheme as Theme;
 };
