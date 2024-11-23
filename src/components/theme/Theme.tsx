@@ -14,8 +14,6 @@ const Theme: React.FC<ThemeProps> = ({ children, config }) => {
     ? mergeTheme(config, defaultTheme)
     : defaultTheme;
 
-  console.log({ defaultThemeMerged });
-
   const [theme, setTheme] = useState(defaultThemeMerged.light);
   const [darkMode, setDarkMode] = useState(false);
 
@@ -25,7 +23,7 @@ const Theme: React.FC<ThemeProps> = ({ children, config }) => {
     } else {
       setTheme({ ...defaultThemeMerged.light, darkMode: false });
     }
-  }, [darkMode]);
+  }, [defaultThemeMerged, darkMode]);
 
   useEffect(() => {
     const changeTheme = (event: MediaQueryListEvent) => {

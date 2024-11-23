@@ -25,4 +25,9 @@ export default styled.div`
   @media (max-width: 769px) {
     overflow: hidden;
   }
+
+  transition: background-color 0.3s, color 0.3s !important;
+  * {
+    transition: background-color 0.3s, color 0.3s !important;
+  }
 `;
