@@ -1,6 +1,6 @@
 import { Colord, colord } from "colord";
 import { useEffect, useState } from "react";
-import { Config } from "../../modules/chat/interfaces";
+import { Config, ConfigTokens } from "../../modules/chat/interfaces";
 
 export interface Tokens {
   darkMode: boolean;
@@ -33,9 +33,38 @@ export interface Themes {
 
 export const mergeTheme = (config: Config, themes: Themes): Themes => {
   return {
-    ...themes,
-    ...config.themes,
+    light: {
+      ...themes.light,
+      ...tokensToColor(config.themes?.light),
+    },
+    dark: {
+      ...themes.dark,
+      ...tokensToColor(config.themes?.dark),
+    },
   };
+};
+
+const tokensToColor = (tokens?: ConfigTokens): Record<string, any> => {
+  const newObject: Record<string, any> = {};
+
+  if (!tokens) {
+    return newObject;
+  }
+
+  const object = tokens as Record<string, any>;
+
+  Object.keys(object).forEach((key) => {
+    if (
+      typeof object[key] === "string" &&
+      (object[key].startsWith("#") || object[key].startsWith("rgb"))
+    ) {
+      newObject[key] = new Color(object[key]);
+    } else {
+      newObject[key] = object[key];
+    }
+  });
+
+  return newObject;
 };
 
 export class Color {

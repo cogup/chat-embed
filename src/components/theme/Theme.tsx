@@ -13,6 +13,9 @@ const Theme: React.FC<ThemeProps> = ({ children, config }) => {
   const defaultThemeMerged = config
     ? mergeTheme(config, defaultTheme)
     : defaultTheme;
+
+  console.log({ defaultThemeMerged });
+
   const [theme, setTheme] = useState(defaultThemeMerged.light);
   const [darkMode, setDarkMode] = useState(false);
 
