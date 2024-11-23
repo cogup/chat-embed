@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { t } from "../theme/Theme";
-import { ThemeType } from "../theme/utils";
 import React from "react";
 
 export enum LoaderType {
@@ -22,7 +21,7 @@ const Loader = styled.div<LoaderProps>(({ type, size, theme }) => {
     } else {
       animation = "loaderBlack";
     }
-  } else if (t(theme).type === ThemeType.Lighter) {
+  } else if (t(theme).darkMode) {
     animation = "loaderBlack";
   } else {
     animation = "loaderWhite";

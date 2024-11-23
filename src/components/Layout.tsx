@@ -29,7 +29,7 @@ const Container = styled.div`
   align-items: center;
   width: 50vw;
   height: 80vh;
-  background: ${({ theme }) => t(theme).colorLight.value};
+  background: ${({ theme }) => t(theme).backgroundChatColor.value};
   border-radius: ${({ theme }) => t(theme).borderRadius};
   padding: 1rem;
   box-shadow: ${({ theme }) => t(theme).boxShadowContainer};

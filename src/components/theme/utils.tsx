@@ -14,13 +14,7 @@ export enum ColorType {
   LINK = "link",
 }
 
-export enum ThemeType {
-  Lighter,
-  Darker,
-}
-
 export interface Theme {
-  type: ThemeType;
   darkMode: boolean;
   boxShadowContainer: string;
   borderRadius: string;
@@ -79,7 +73,7 @@ export class Color {
   private darkMode?: boolean;
   private transparent: boolean;
 
-  constructor(color: string, hoverColor?: string, darkMode?: boolean) {
+  constructor(color: string, darkMode?: boolean) {
     if (color === "transparent") {
       this.transparent = true;
       this.color = darkMode
@@ -91,10 +85,6 @@ export class Color {
     }
 
     this.darkMode = darkMode;
-
-    if (hoverColor) {
-      this.hoverColor = new Color(hoverColor, undefined, darkMode);
-    }
   }
 
   get value() {
