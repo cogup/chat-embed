@@ -21,9 +21,9 @@ const Theme: React.FC<ThemeProps> = ({ children, config }) => {
 
   useEffect(() => {
     if (darkMode) {
-      setTheme({ ...defaultTheme.dark, darkMode: true });
+      setTheme({ ...defaultThemeMerged.dark, darkMode: true });
     } else {
-      setTheme({ ...defaultTheme.light, darkMode: false });
+      setTheme({ ...defaultThemeMerged.light, darkMode: false });
     }
   }, [darkMode]);
 

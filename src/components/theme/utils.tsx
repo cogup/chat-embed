@@ -32,6 +32,7 @@ export interface Themes {
 }
 
 export const mergeTheme = (config: Config, themes: Themes): Themes => {
+  console.log({ config, themes });
   return {
     light: {
       ...themes.light,
