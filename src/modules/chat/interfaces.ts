@@ -1,11 +1,7 @@
+import { Theme } from "../../components/theme/utils";
+
 export type Config = {
-  balloonAssistantColor?: string;
-  balloonUserColor?: string;
-  backgroundChatColor?: string;
-  backgroundChatImage?: string;
-  backgroundSiteColor?: string;
-  backgroundSiteImage?: string;
-  buttonSendColor?: string;
+  theme: Theme;
   darkMode?: boolean;
   token: string;
 };

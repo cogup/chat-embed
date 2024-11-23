@@ -14,7 +14,7 @@ export enum ColorType {
   LINK = "link",
 }
 
-export interface Theme {
+export interface Tokens {
   darkMode: boolean;
   boxShadowContainer: string;
   borderRadius: string;
@@ -38,30 +38,15 @@ export interface Theme {
   backgroundChatImage: string;
 }
 
+export interface Theme {
+  light: Tokens;
+  dark: Tokens;
+}
+
 export const mergeTheme = (config: Config, theme: Theme): Theme => {
   return {
     ...theme,
-    balloonAssistantColor: config.balloonAssistantColor
-      ? new Color(config.balloonAssistantColor)
-      : theme.balloonAssistantColor,
-    balloonUserColor: config.balloonUserColor
-      ? new Color(config.balloonUserColor)
-      : theme.balloonUserColor,
-    backgroundChatImage: config.backgroundChatImage
-      ? config.backgroundChatImage
-      : theme.backgroundChatImage,
-    backgroundChatColor: config.backgroundChatColor
-      ? new Color(config.backgroundChatColor)
-      : theme.backgroundChatColor,
-    backgroundSiteColor: config.backgroundSiteColor
-      ? new Color(config.backgroundSiteColor)
-      : theme.backgroundSiteColor,
-    backgroundSiteImage: config.backgroundSiteImage
-      ? config.backgroundSiteImage
-      : theme.backgroundSiteImage,
-    buttonSendColor: config.buttonSendColor
-      ? new Color(config.buttonSendColor)
-      : theme.buttonSendColor,
+    ...config.theme,
   };
 };
 
@@ -111,12 +96,6 @@ export class Color {
 
   get text() {
     if (this.colorTextDark?.value && this.colorTextLight?.value) {
-      if (this.darkMode) {
-        return this.color.isLight()
-          ? this.colorTextLight.value
-          : this.colorTextDark.value;
-      }
-
       return this.color.isLight()
         ? this.colorTextDark.value
         : this.colorTextLight.value;
@@ -124,30 +103,34 @@ export class Color {
   }
 }
 
-export const resolveTheme = (theme: Theme): Theme => {
-  const fixTheme = theme as Record<string, any>;
+export const resolveThemes = (themes: Theme): Theme => {
+  return {
+    light: resolveTokens(themes.light),
+    dark: resolveTokens(themes.dark),
+  };
+};
 
-  const colorLight = theme.darkMode ? theme.colorDark : theme.colorLight;
-  const colorDark = theme.darkMode ? theme.colorLight : theme.colorDark;
+export const resolveTokens = (tokens: Tokens): Tokens => {
+  const fixTokens = tokens as Record<string, any>;
 
-  Object.keys(theme).forEach((key) => {
-    if (fixTheme[key] instanceof Color) {
-      console.log(fixTheme[key]);
-      const upColor = fixTheme[key] as Color;
+  Object.keys(tokens).forEach((key) => {
+    if (fixTokens[key] instanceof Color) {
+      console.log(fixTokens[key]);
+      const upColor = fixTokens[key] as Color;
 
-      upColor.setColorTextLight(colorLight);
-      upColor.setColorTextDark(colorDark);
-      upColor.setDarkMode(theme.darkMode);
+      upColor.setColorTextLight(fixTokens.colorLight);
+      upColor.setColorTextDark(fixTokens.colorDark);
+      upColor.setDarkMode(tokens.darkMode);
 
-      upColor.hover.setColorTextLight(colorLight);
-      upColor.hover.setColorTextDark(colorDark);
-      upColor.hover.setDarkMode(theme.darkMode);
+      upColor.hover.setColorTextLight(fixTokens.colorLight);
+      upColor.hover.setColorTextDark(fixTokens.colorDark);
+      upColor.hover.setDarkMode(tokens.darkMode);
 
-      fixTheme[key] = upColor;
+      fixTokens[key] = upColor;
     }
   });
 
-  return fixTheme as Theme;
+  return fixTokens as Tokens;
 };
 
 /**

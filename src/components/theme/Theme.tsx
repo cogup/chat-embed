@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { DefaultTheme, ThemeProvider } from "styled-components";
-import { resolveTheme, Theme as ITheme, mergeTheme } from "./utils";
+import { resolveTokens, mergeTheme, Tokens } from "./utils";
 import { Config } from "../../modules/chat/interfaces";
 import defaultTheme from "../../settings/themes/default";
 interface ThemeProps {
   children: React.ReactNode;
   config: Config | null;
 }
-export const t = (t: DefaultTheme): ITheme => t as ITheme;
+export const t = (t: DefaultTheme): Tokens => t as Tokens;
 
 const Theme: React.FC<ThemeProps> = ({ children, config }) => {
-  const [theme, setTheme] = useState(
-    config ? mergeTheme(config, defaultTheme) : defaultTheme
-  );
+  const defaultThemeMerged = config
+    ? mergeTheme(config, defaultTheme)
+    : defaultTheme;
+  const [theme, setTheme] = useState(defaultThemeMerged.light);
   const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     if (config && config.darkMode && darkMode) {
-      setTheme({ ...defaultTheme, darkMode: true });
+      setTheme({ ...defaultTheme.dark, darkMode: true });
     } else {
-      setTheme({ ...defaultTheme, darkMode: false });
+      setTheme({ ...defaultTheme.light, darkMode: false });
     }
   }, [config, config?.darkMode, darkMode]);
 
@@ -42,7 +43,7 @@ const Theme: React.FC<ThemeProps> = ({ children, config }) => {
   }, []);
 
   const getTheme = () => {
-    return resolveTheme(theme);
+    return resolveTokens(theme);
   };
 
   return <ThemeProvider theme={getTheme()}>{children}</ThemeProvider>;
